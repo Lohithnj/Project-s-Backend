@@ -1,5 +1,6 @@
 package com.carpool.CarPoolingSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,6 +10,7 @@ public class RideStopover {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ride_id", nullable = false)
     private Ride ride;
@@ -19,7 +21,7 @@ public class RideStopover {
     @Column(name = "stopover_order", nullable = false)
     private int stopoverOrder;
 
-    // Default constructor (required by JPA)
+
     public RideStopover() {
     }
 
@@ -30,7 +32,6 @@ public class RideStopover {
         this.stopoverOrder = stopoverOrder;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -62,5 +63,10 @@ public class RideStopover {
     public void setStopoverOrder(int stopoverOrder) {
         this.stopoverOrder = stopoverOrder;
     }
+    @Override
+    public String toString() {
+        return "RideStopover{id=" + id + ", location=" + stopoverLocation + ", order=" + stopoverOrder + "}";
+    }
+
 
 }

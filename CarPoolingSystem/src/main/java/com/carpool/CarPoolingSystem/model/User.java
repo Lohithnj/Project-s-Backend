@@ -23,11 +23,6 @@ public class User {
     
    private String role;
 
-
-
-    // Getters & Setters
-
-
     public Long getId() {
         return id;
     }

@@ -28,7 +28,7 @@
 //    @Autowired
 //    private OtpRepository otpRepository;
 //
-//    // ✅ Check if email already exists
+//    //  Check if email already exists
 //    @GetMapping("/check-email")
 //    public ResponseEntity<?> checkEmail(@RequestParam String email) {
 //        boolean exists = userRepo.existsByEmail(email);
@@ -60,7 +60,7 @@
 //    }
 //
 //
-////    // ✅ Verify OTP
+////    //  Verify OTP
 //
 //    @PostMapping("/verify-otp")
 //    public ResponseEntity<?> verifyOtp(@RequestBody Map<String, String> request) {
@@ -81,7 +81,7 @@
 //
 //
 //    //-----------------------------------
-//    // ✅ Register after OTP verification
+//    //  Register after OTP verification
 //    @PostMapping("/register")
 //    public ResponseEntity<?> registerUser(@RequestBody User user) {
 //        if (!user.getPassword().matches("^[a-zA-Z0-9]{6}$")) {
@@ -95,7 +95,7 @@
 //    }
 //
 //
-//    // ✅ Login method
+//    //  Login method
 //    @PostMapping("/login")
 //    public ResponseEntity<?> login(@RequestBody Map<String, String> loginData) {
 //        String email = loginData.get("email");
@@ -140,14 +140,14 @@ public class AuthController {
     @Autowired
     private OtpRepository otpRepository;
 
-    // ✅ Check if email already exists
+    //  Check if email already exists
     @GetMapping("/check-email")
     public ResponseEntity<?> checkEmail(@RequestParam String email) {
         boolean exists = userRepo.existsByEmail(email);
         return ResponseEntity.ok(!exists); // true = email available
     }
 
-    // ✅ Send OTP to new email
+    //  Send OTP to new email
     @PostMapping("/send-otp")
     public ResponseEntity<?> sendOtp(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -172,7 +172,7 @@ public class AuthController {
         }
     }
 
-    // ✅ Verify the OTP
+    // Verify the OTP
     @PostMapping("/verify-otp")
     public ResponseEntity<?> verifyOtp(@RequestBody Map<String, String> request) {
         String email = request.get("email");
@@ -190,7 +190,7 @@ public class AuthController {
         }
     }
 
-    // ✅ Register user after OTP verification
+    // Register user after OTP verification
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         if (!user.getPassword().matches("^[a-zA-Z0-9]{6}$")) {
@@ -205,7 +205,7 @@ public class AuthController {
         return ResponseEntity.ok("User registered successfully");
     }
 
-    // ✅ Login with email & password
+    //  Login with email & password
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Map<String, String> loginData) {
         String email = loginData.get("email");

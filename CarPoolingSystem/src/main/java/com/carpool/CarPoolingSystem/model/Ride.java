@@ -5,8 +5,10 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
+@Table(name = "ride")
 @Data
 public class Ride {
 
@@ -22,12 +24,18 @@ public class Ride {
     private LocalTime rideTime;
     private int seatsAvailable;
 
+    private Double baseFare;
+    private Double distanceInKm;
+
+//    @OneToMany(mappedBy = "ride", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<RideStopover> stopovers;
+
     private java.sql.Timestamp createdAt = new java.sql.Timestamp(System.currentTimeMillis());
+    @OneToMany(mappedBy = "ride", cascade = CascadeType.ALL, orphanRemoval = true)
+    private java.util.List<RideStopover> stopovers = new java.util.ArrayList<>();
 
     public Ride() {
     }
-
-    // Parameterized constructor
     public Ride(String ownerEmail, String fromLocation, String toLocation,
                 LocalDate rideDate, LocalTime rideTime, int seatsAvailable) {
         this.ownerEmail = ownerEmail;
@@ -37,8 +45,6 @@ public class Ride {
         this.rideTime = rideTime;
         this.seatsAvailable = seatsAvailable;
     }
-
-    // Getters
     public Long getRideId() {
         return rideId;
     }
@@ -67,11 +73,6 @@ public class Ride {
         return seatsAvailable;
     }
 
-//    public Timestamp getCreatedAt() {
-//        return createdAt;
-//    }
-
-    // Setters
     public void setRideId(Long rideId) {
         this.rideId = rideId;
     }
@@ -101,5 +102,14 @@ public class Ride {
     }
 
 
+    //neww
+    public Double getDistanceInKm() {
+        return distanceInKm;
+    }
+
+
+    public Double getBaseFare() {
+        return baseFare;
+    }
 }
 

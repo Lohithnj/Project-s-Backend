@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll()
-                        .anyRequest().permitAll() // 👈 Temporarily allow all for testing
+                        .anyRequest().permitAll() // Temporarily allow all
                 );
         return http.build();
     }
@@ -32,7 +32,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // ✅ This Bean sets up CORS rules that Spring Security will respect
+    //This Bean sets up CORS rules that Spring Security will respect
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();

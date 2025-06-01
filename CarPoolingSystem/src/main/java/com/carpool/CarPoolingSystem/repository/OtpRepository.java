@@ -15,19 +15,6 @@ public class OtpRepository {
         otpStorage.put(email, new OtpEntry(otp, timestamp));
     }
 
-//    public boolean isValid(String email, String otp) {
-//        OtpEntry entry = otpStorage.get(email);
-//        if (entry == null) return false;
-//
-//        // OTP valid for 5 minutes
-//        if (entry.timestamp.plusMinutes(5).isBefore(LocalDateTime.now())) {
-//            otpStorage.remove(email); // expired
-//            return false;
-//        }
-//
-//        return entry.otp.equals(otp);
-//    }
-
 
     public boolean isValid(String email, String otp) {
         OtpEntry entry = otpStorage.get(email);
@@ -37,7 +24,7 @@ public class OtpRepository {
             return false;
         }
 
-        System.out.println("Stored OTP: " + entry.otp + ", Given OTP: " + otp);
+      //  System.out.println("Stored OTP: " + entry.otp + ", Given OTP: " + otp);
 
         if (entry.timestamp.plusMinutes(5).isBefore(LocalDateTime.now())) {
             otpStorage.remove(email);

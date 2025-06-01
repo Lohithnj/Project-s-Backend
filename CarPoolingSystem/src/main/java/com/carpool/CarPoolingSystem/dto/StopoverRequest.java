@@ -3,8 +3,6 @@ package com.carpool.CarPoolingSystem.dto;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class StopoverRequest {
@@ -27,7 +25,6 @@ public class StopoverRequest {
         this.rideId = rideId;
     }
 
-    // Getters and Setters
     public String getFromLocation() {
         return fromLocation;
     }

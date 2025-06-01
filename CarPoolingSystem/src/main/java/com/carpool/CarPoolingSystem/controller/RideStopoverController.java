@@ -1,6 +1,5 @@
 package com.carpool.CarPoolingSystem.controller;
 
-
 import com.carpool.CarPoolingSystem.dto.StopoverRequest;
 import com.carpool.CarPoolingSystem.model.Ride;
 import com.carpool.CarPoolingSystem.model.RideStopover;
@@ -26,8 +25,6 @@ public class RideStopoverController {
                     Ride ride = new Ride();
                     ride.setRideId(request.getRideId());
                     s.setRide(ride);
-
-
                 }
             }
             return ResponseEntity.ok("Stopovers saved successfully.");
